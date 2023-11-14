@@ -1,5 +1,4 @@
-﻿using DevExpress.Data;
-using DevExpress.Mvvm;
+﻿using DevExpress.Mvvm;
 using System.Collections.ObjectModel;
 using System.Windows;
 
@@ -7,32 +6,30 @@ namespace TreeList_DataBinding {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
-            treeListView1.ExpandAllNodes();
         }
     }
+
+    public enum SummaryItemType { Max, Count, Average }
 
     public class ViewModel : ViewModelBase {
-        public ObservableCollection<SummaryTask> SummaryList {
-            get { return GetProperty(() => SummaryList); }
-            set { SetProperty(() => SummaryList, value); }
-        }
-
-        public ObservableCollection<Employee> SourceList {
-            get { return GetProperty(() => SourceList); }
-            set { SetProperty(() => SourceList, value); }
-        }
-
         public ViewModel() {
             SourceList = Staff.GetStaff();
-            SummaryList = new ObservableCollection<SummaryTask>();
-
-            SummaryList.Add(new SummaryTask() { FieldName = "Statistics", Type = SummaryItemType.Max });
-            SummaryList.Add(new SummaryTask() { FieldName = "Statistics", Type = SummaryItemType.Average });
-            SummaryList.Add(new SummaryTask() { FieldName = "Department", Type = SummaryItemType.Count });
+            SummaryList = new ObservableCollection<SummaryTask> {
+                new SummaryTask(nameof(Employee.Statistics), SummaryItemType.Max),
+                new SummaryTask(nameof(Employee.Statistics), SummaryItemType.Average),
+                new SummaryTask(nameof(Employee.Department), SummaryItemType.Count)
+            };
         }
+        public ObservableCollection<Employee> SourceList { get; set; }
+        public ObservableCollection<SummaryTask> SummaryList { get; }
     }
 
-    public class SummaryTask {
+    public class SummaryTask : BindableBase {
+        public SummaryTask(string fieldName, SummaryItemType type) {
+            FieldName = fieldName;
+            Type = type;
+        }
+
         public string FieldName { get; set; }
         public SummaryItemType Type { get; set; }
     }

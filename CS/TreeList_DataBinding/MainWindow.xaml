@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:dxi="http://schemas.devexpress.com/winfx/2008/xaml/core/internal"
     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+    xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:TreeList_DataBinding"
     Title="MainWindow" Height="350" Width="525">
@@ -10,29 +11,35 @@
         <local:ViewModel/>
     </Window.DataContext>
     <Window.Resources>
+        <dxmvvm:ObjectToObjectConverter x:Key="SummaryTypeConverter">
+            <dxmvvm:MapItem Source="Max" Target="Max"/>
+            <dxmvvm:MapItem Source="Count" Target="Count"/>
+            <dxmvvm:MapItem Source="Average" Target="Average"/>
+        </dxmvvm:ObjectToObjectConverter>
         <DataTemplate x:Key="SummaryTemplate">
             <ContentControl>
-                <dxg:TreeListSummaryItem FieldName="{Binding Path=(dxi:DependencyObjectExtensions.DataContext).FieldName, RelativeSource={RelativeSource Self}}" 
-                                         SummaryType="{Binding Path=(dxi:DependencyObjectExtensions.DataContext).Type, RelativeSource={RelativeSource Self}}"/>
+                <dxg:TreeListSummaryItem FieldName="{Binding Path=(dxi:DependencyObjectExtensions.DataContext).FieldName, 
+                                                             RelativeSource={RelativeSource Self}}" 
+                                         SummaryType="{Binding Path=(dxi:DependencyObjectExtensions.DataContext).Type, 
+                                                               RelativeSource={RelativeSource Self}, 
+                                                               Converter={StaticResource SummaryTypeConverter}}"/>
             </ContentControl>
         </DataTemplate>
     </Window.Resources>
     <Grid>
-        <dxg:TreeListControl Name="treeList" ItemsSource="{Binding SourceList}">
-            
-            <dxg:TreeListControl.Columns>
-                <dxg:TreeListColumn FieldName="Name"/>
-                <dxg:TreeListColumn FieldName="Statistics"/>
-                <dxg:TreeListColumn FieldName="Department"/>
-            </dxg:TreeListControl.Columns>
-            
+        <dxg:TreeListControl ItemsSource="{Binding SourceList}">
+
+            <dxg:TreeListColumn FieldName="Name"/>
+            <dxg:TreeListColumn FieldName="Statistics"/>
+            <dxg:TreeListColumn FieldName="Department"/>
+
             <dxg:TreeListControl.View>
-                <dxg:TreeListView Name="treeListView1" AutoWidth="False" ShowTotalSummary="True" ShowNodeFooters="True"
+                <dxg:TreeListView ShowNodeFooters="True"
                                   KeyFieldName="ID" ParentFieldName="ParentID"
                                   NodeSummarySource="{Binding SummaryList}" 
                                   NodeSummaryGeneratorTemplate="{StaticResource SummaryTemplate}"/>
             </dxg:TreeListControl.View>
         </dxg:TreeListControl>
-        
+
     </Grid>
 </Window>
