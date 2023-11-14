@@ -24,5 +24,6 @@ This example demonstrates how to define a collection of [node summaries](https:/
 
 ## More Examples
 
-* [WPF Tree List - Show Node Summaries](https://github.com/DevExpress-Examples/how-to-show-node-summaries-in-treelistview-t506323)
+* [WPF Tree List - Display Node Summaries](https://github.com/DevExpress-Examples/how-to-show-node-summaries-in-treelistview-t506323)
+* [WPF Tree List - Calculate Custom Node Summaries](https://github.com/DevExpress-Examples/how-to-calculate-custom-node-summaries-in-treelistview-t506349)
 * [Bind the WPF Data Grid to Total and Group Summaries Specified in ViewModel](https://github.com/DevExpress-Examples/wpf-mvvm-how-to-bind-the-gridcontrol-to-total-and-group-summaries-specified-in-viewmodel)
