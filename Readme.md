@@ -3,18 +3,26 @@
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T506283)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
-<!-- default file list -->
-*Files to look at*:
 
-* [Employees.cs](./CS/TreeList_DataBinding/Employees.cs) (VB: [Employees.vb](./VB/TreeList_DataBinding/Employees.vb))
-* [MainWindow.xaml](./CS/TreeList_DataBinding/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/TreeList_DataBinding/MainWindow.xaml))
+# WPF Tree List - Generate Node Summaries Based on a View Model Collection
+
+This example demonstrates how to define a collection of [node summaries](https://docs.devexpress.com/WPF/118490/controls-and-libraries/data-grid/data-summaries/node-summary) in a View Model and generate summary items based on this collection.
+
+![image](https://github.com/DevExpress-Examples/how-to-show-node-summaries-based-on-a-source-collection-t506283/assets/65009440/24f4fda2-df05-480c-bb34-7a447481881b)
+
+## Files to Review
+
+* [MainWindow.xaml](./CS/TreeList_DataBinding/MainWindow.xaml)
 * [MainWindow.xaml.cs](./CS/TreeList_DataBinding/MainWindow.xaml.cs) (VB: [MainWindow.xaml.vb](./VB/TreeList_DataBinding/MainWindow.xaml.vb))
-<!-- default file list end -->
-# How to show Node Summaries based on a source collection
 
+## Documentation
 
-To show Node Summaries based on a certain source collection, you need to use TreeListView's <a href="https://documentation.devexpress.com/WPF/DevExpressXpfGridTreeListView_NodeSummarySourcetopic.aspx">NodeSummarySource</a> property. The <a href="https://documentation.devexpress.com/WPF/DevExpressXpfGridTreeListView_NodeSummaryGeneratorTemplatetopic.aspx">NodeSummaryGeneratorTemplate</a> property is used to define the required template containing a corresponding TreeListSummaryItem object declaration.
+* [TreeListView.NodeSummarySource](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.TreeListView.NodeSummarySource)
+* [TreeListView.NodeSummaryGeneratorTemplate](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.TreeListView.NodeSummaryGeneratorTemplate)
+* [Node Summary](https://docs.devexpress.com/WPF/118490/controls-and-libraries/data-grid/data-summaries/node-summary)
+* [Bind the Grid to Total and Group Summaries](https://docs.devexpress.com/WPF/10124/controls-and-libraries/data-grid/mvvm-enhancements/examples/binding-to-total-and-group-summaries)
 
-<br/>
+## More Examples
 
-
+* [WPF Tree List - Show Node Summaries](https://github.com/DevExpress-Examples/how-to-show-node-summaries-in-treelistview-t506323)
+* [Bind the WPF Data Grid to Total and Group Summaries Specified in ViewModel](https://github.com/DevExpress-Examples/wpf-mvvm-how-to-bind-the-gridcontrol-to-total-and-group-summaries-specified-in-viewmodel)
